@@ -1,3 +1,77 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "plugins": ["prettier", "@typescript-eslint", "import"],
+  "rules": {
+    "import/no-anonymous-default-export": "off",
+    "react/display-name": "off",
+    "no-underscore-dangle": "off",
+    "no-extra-semi": "off",
+    "no-restricted-syntax": ["error", "WithStatement"],
+    "import/export": "off",
+    "quotes": ["error", "double"],
+    "no-console": "off",
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/no-var-requires": "warn",
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "ignoreUrls": true,
+        "ignoreComments": false
+      }
+    ],
+    "@typescript-eslint/indent": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/1824,
+    "@typescript-eslint/no-implied-eval": "off", // trade-"off" for faster linting without parserOptions setting
+    "@typescript-eslint/no-throw-literal": "off", // trade-"off" for faster linting without parserOptions setting
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/prefer-optional-chain": "warn",
+    "import/extensions": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*/api/*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    },
+    {
+      "files": ["*.test.*"],
+      "rules": {
+        "import/no-named-as-default-member": "off"
+      }
+    },
+    {
+      "files": ["assets/*.tsx", "logos/*.tsx"],
+      "rules": {
+        "max-len": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  }
 }
