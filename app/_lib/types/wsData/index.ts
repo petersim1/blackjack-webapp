@@ -3,8 +3,8 @@ export interface GameContextVarsI {
   count: number[];
   text: string;
   total: number;
-  houseCards: [string, string][];
-  playerCards: [string, string][];
+  house_cards: [string, string][];
+  player_cards: [string, string][];
   policy: string[];
 }
 
