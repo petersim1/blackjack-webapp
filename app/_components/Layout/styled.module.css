@@ -16,8 +16,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+  align-items: flex-start;
+  padding: 20px;
   padding-bottom: 50px;
   gap: 10px;
 }
@@ -52,6 +52,27 @@
 .item {
   border: 1px solid gray;
   margin: 3px;
+}
+
+.sensitive {
+  display: inline-block;
+  position: relative;
+}
+
+.sensitive.hidden {
+  visibility: hidden;
+}
+
+.sensitive.hidden::after {
+  content: "";
+  position: absolute;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background-color: white;
+  filter: blur(2px);
 }
 
 /* MAIN */

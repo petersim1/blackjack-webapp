@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import clsx from "clsx";
 
 import { useWsDataContext } from "@/_lib/providers";
 import Toggle from "@/_components/Elements/Toggle";
@@ -13,10 +14,16 @@ export default (): JSX.Element => {
     <div className={styled.count}>
       <div>
         <p>
-          Count: <span>{gameData.data.count[0]}</span>
+          Count:{" "}
+          <span className={clsx(styled.sensitive, { [styled.hidden]: !show })}>
+            {gameData.data.count[0]}
+          </span>
         </p>
         <p>
-          True Count: <span>{gameData.data.count[1]}</span>
+          True Count:{" "}
+          <span className={clsx(styled.sensitive, { [styled.hidden]: !show })}>
+            {gameData.data.count[1]}
+          </span>
         </p>
       </div>
       <div>
