@@ -1,0 +1,16 @@
+export const INITIAL_GAME_CONTEXT = {
+  profit: 0,
+  count: [0, 0],
+  text: "",
+  total: 0,
+  houseCards: [],
+  playerCards: [],
+  policy: [],
+  setProfit: (): void => {},
+  setCount: (): void => {},
+  setText: (): void => {},
+  setTotal: (): void => {},
+  setHouseCards: (): void => {},
+  setPlayerCards: (): void => {},
+  setPolicy: (): void => {},
+};

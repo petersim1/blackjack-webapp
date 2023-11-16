@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useWebsocketContext } from "@/_providers/ws";
+import { useWebsocketContext } from "@/_lib/providers";
 
 import styles from "./page.module.css";
 

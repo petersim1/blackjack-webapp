@@ -1,15 +1,10 @@
 "use client";
 
 import { FC, ReactNode, createContext, useEffect, useContext, useRef } from "react";
-import { useGameContext } from "./data";
+import { useGameContext } from "../Game";
 
-const INITIAL_WEBSOCKET_CONTEXT = {
-  ws: null,
-};
-
-interface WebsocketContextI {
-  ws: WebSocket | null;
-}
+import { WebsocketContextI } from "./types";
+import { INITIAL_WEBSOCKET_CONTEXT } from "./initialValues";
 
 export const WebsocketContext = createContext<WebsocketContextI>(INITIAL_WEBSOCKET_CONTEXT);
 
@@ -51,9 +46,7 @@ export const WebsocketProvider: FC<{ children: ReactNode }> = ({ children }) => 
       if (wsCurrent.readyState === 1) {
         wsCurrent.close();
       } else {
-        wsCurrent.addEventListener("open", () => {
-          wsCurrent.close();
-        });
+        wsCurrent.onopen = (): void => wsCurrent.close();
       }
     };
   }, [setProfit, setCount, setText, setTotal, setHouseCards, setPlayerCards, setPolicy]);

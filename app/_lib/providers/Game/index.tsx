@@ -1,48 +1,8 @@
 "use client";
 
-import {
-  FC,
-  ReactNode,
-  createContext,
-  useState,
-  useContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
-
-const INITIAL_GAME_CONTEXT = {
-  profit: 0,
-  count: [0, 0],
-  text: "",
-  total: 0,
-  houseCards: [],
-  playerCards: [],
-  policy: [],
-  setProfit: (): void => {},
-  setCount: (): void => {},
-  setText: (): void => {},
-  setTotal: (): void => {},
-  setHouseCards: (): void => {},
-  setPlayerCards: (): void => {},
-  setPolicy: (): void => {},
-};
-
-interface GameContextI {
-  profit: number;
-  count: number[];
-  text: string;
-  total: number;
-  houseCards: [string, string][];
-  playerCards: [string, string][];
-  policy: string[];
-  setProfit: Dispatch<SetStateAction<number>>;
-  setCount: Dispatch<SetStateAction<number[]>>;
-  setText: Dispatch<SetStateAction<string>>;
-  setTotal: Dispatch<SetStateAction<number>>;
-  setHouseCards: Dispatch<SetStateAction<[string, string][]>>;
-  setPlayerCards: Dispatch<SetStateAction<[string, string][]>>;
-  setPolicy: Dispatch<SetStateAction<string[]>>;
-}
+import { FC, ReactNode, createContext, useState, useContext } from "react";
+import { GameContextI } from "./types";
+import { INITIAL_GAME_CONTEXT } from "./initialValues";
 
 export const GameContext = createContext<GameContextI>(INITIAL_GAME_CONTEXT);
 
