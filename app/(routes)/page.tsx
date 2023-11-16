@@ -17,7 +17,7 @@ export default (): JSX.Element => {
   };
 
   return (
-    <main className={styles.main}>
+    <main>
       <div className={styles.description}>
         <button onClick={submitReq}>test</button>
         <button onClick={closeReq}>close</button>

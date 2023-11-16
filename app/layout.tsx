@@ -2,6 +2,7 @@ import "@/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { WsDataProvider } from "@/_lib/providers";
+import Layout, { Sidebar, Footer } from "./_components/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,13 @@ export default ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WsDataProvider>{children}</WsDataProvider>
+        <WsDataProvider>
+          <Layout>
+            <Sidebar />
+            {children}
+            <Footer />
+          </Layout>
+        </WsDataProvider>
       </body>
     </html>
   );
