@@ -73,7 +73,6 @@ export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setPlayerCards,
     setPolicy,
   };
-
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
 

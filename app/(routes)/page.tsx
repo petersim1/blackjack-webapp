@@ -1,30 +1,20 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useWebsocketContext } from "@/_providers/ws";
 
 import styles from "./page.module.css";
 
 export default (): JSX.Element => {
-  const [ws, setWs] = useState<WebSocket | null>(null);
-
-  useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8080/ws");
-    socket.onmessage = ({ data }): void => {
-      console.log(data);
-    };
-
-    setWs(socket);
-
-    return () => setWs(null);
-  }, []);
+  const { ws } = useWebsocketContext();
 
   const submitReq = (): void => {
     if (!ws) return;
-    ws.send("get");
+    ws.send(JSON.stringify({ code: "start" }));
   };
+
   const closeReq = (): void => {
     if (!ws) return;
-    ws.send("close");
+    ws.send(JSON.stringify({ code: "close" }));
   };
 
   return (
@@ -34,8 +24,8 @@ export default (): JSX.Element => {
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.tsx</code>
         </p>
-        <button onClick={submitReq}>Try me</button>
-        <button onClick={closeReq}>Try me</button>
+        <button onClick={submitReq}>Start</button>
+        <button onClick={closeReq}>End</button>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

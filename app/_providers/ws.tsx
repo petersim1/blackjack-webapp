@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactNode, createContext, useState, useEffect, useContext } from "react";
+import { FC, ReactNode, createContext, useEffect, useContext, useRef } from "react";
 import { useGameContext } from "./data";
 
 const INITIAL_WEBSOCKET_CONTEXT = {
@@ -8,23 +8,28 @@ const INITIAL_WEBSOCKET_CONTEXT = {
 };
 
 interface WebsocketContextI {
-  ws: null | WebSocket;
+  ws: WebSocket | null;
 }
 
 export const WebsocketContext = createContext<WebsocketContextI>(INITIAL_WEBSOCKET_CONTEXT);
 
 export const WebsocketProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [ws, setWs] = useState<null | WebSocket>(INITIAL_WEBSOCKET_CONTEXT.ws);
+  const ws = useRef<WebSocket | null>(null);
+
   const { setProfit, setCount, setText, setTotal, setHouseCards, setPlayerCards, setPolicy } =
     useGameContext();
 
   useEffect(() => {
     // browser API, so must be mounted. Establish the onmessage handler.
     // Should probably push the "gameContext" to a reducer for cleanliness.
-    const socket = new WebSocket("ws://localhost:8080/ws");
-    socket.onmessage = ({ data }): void => {
+    ws.current = new WebSocket("ws://localhost:8080/ws");
+    ws.current.onopen = (): void => console.log("open");
+    ws.current.onclose = (): void => console.log("close");
+    ws.current.onmessage = ({ data }): void => {
       const { balance, count, true_count, text, policy, house_cards, player_cards, player_total } =
         JSON.parse(data);
+
+      console.log(JSON.parse(data));
 
       setProfit(balance);
       setCount([count, true_count]);
@@ -35,15 +40,27 @@ export const WebsocketProvider: FC<{ children: ReactNode }> = ({ children }) => 
       setTotal(player_total);
     };
 
-    setWs(socket);
+    const wsCurrent = ws.current;
 
     return () => {
-      socket.close();
-      setWs(null);
+      // if we just call wsCurrent.close(), the websocket is close
+      // before the connection is even made.
+      // In this case (at least in React Strict Mode), we'll be able to safely
+      // close the existing connection once it's established. 2 will still be made
+      // in dev mode, but the 1st one is at least safely cleared.
+      if (wsCurrent.readyState === 1) {
+        wsCurrent.close();
+      } else {
+        wsCurrent.addEventListener("open", () => {
+          wsCurrent.close();
+        });
+      }
     };
   }, [setProfit, setCount, setText, setTotal, setHouseCards, setPlayerCards, setPolicy]);
 
-  return <WebsocketContext.Provider value={{ ws }}>{children}</WebsocketContext.Provider>;
+  return (
+    <WebsocketContext.Provider value={{ ws: ws.current }}>{children}</WebsocketContext.Provider>
+  );
 };
 
-export const useScrollContext = (): WebsocketContextI => useContext(WebsocketContext);
+export const useWebsocketContext = (): WebsocketContextI => useContext(WebsocketContext);
