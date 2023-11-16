@@ -10,6 +10,7 @@ export const INITIAL_GAME_CONTEXT = {
 
 export const INITIAL_WSDATA_CONTEXT = {
   ws: null,
+  connected: false,
   gameData: {
     history: [],
     data: { ...INITIAL_GAME_CONTEXT },

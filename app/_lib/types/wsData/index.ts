@@ -15,5 +15,6 @@ export interface GameDataAggI {
 
 export interface WsDataContextI {
   ws: WebSocket | null;
+  connected: boolean;
   gameData: GameDataAggI;
 }
