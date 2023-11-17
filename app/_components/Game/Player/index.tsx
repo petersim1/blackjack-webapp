@@ -1,7 +1,7 @@
 import styled from "../styled.module.css";
 import Card from "@/_components/Elements/Card";
 
-export default ({ cards }: { cards: [string, string][] }): JSX.Element => {
+export default ({ cards, total }: { cards: [string, string][]; total: number }): JSX.Element => {
   return (
     <div className={styled.player_wrapper}>
       {/* {cards.map((hand, ind) => (
@@ -17,6 +17,7 @@ export default ({ cards }: { cards: [string, string][] }): JSX.Element => {
         {cards.map((card, ind) => (
           <Card card={card} key={ind} transform={`translateX(${ind * 35}px)`} />
         ))}
+        {total > 0 && <div className={styled.total}>{total}</div>}
       </div>
     </div>
   );

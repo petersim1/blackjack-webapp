@@ -1,7 +1,7 @@
 "use client";
 
 import { useWsDataContext } from "@/_lib/providers";
-import styled from "@/_components/Layout/styled.module.css";
+import styled from "../styled.module.css";
 
 export default (): JSX.Element => {
   const { gameData } = useWsDataContext();
@@ -13,6 +13,9 @@ export default (): JSX.Element => {
           {"Profit (units): "}
           <span>{gameData.data.profit}</span>
         </p>
+      </div>
+      <div>
+        <p>{gameData.data.text}</p>
       </div>
     </div>
   );
