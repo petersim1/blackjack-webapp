@@ -1,4 +1,7 @@
 export interface GameContextVarsI {
+  round_over: boolean;
+  deal_house: boolean;
+  deal_player: boolean;
   profit: number;
   count: number[];
   text: string;

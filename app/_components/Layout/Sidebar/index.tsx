@@ -5,12 +5,12 @@ import styles from "../styled.module.css";
 
 export default (): JSX.Element => {
   return (
-    <nav>
+    <aside>
       <div className={styles.sidebar}>
         <Stats />
         <History />
         <Count />
       </div>
-    </nav>
+    </aside>
   );
 };

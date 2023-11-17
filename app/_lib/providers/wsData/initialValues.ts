@@ -1,4 +1,7 @@
 export const INITIAL_GAME_CONTEXT = {
+  round_over: true,
+  deal_player: false,
+  deal_house: false,
   profit: 0,
   count: [0, 0],
   text: "",

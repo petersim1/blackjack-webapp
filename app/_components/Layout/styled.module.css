@@ -114,8 +114,29 @@
   height: 7px;
   width: 7px;
   border-radius: 100%;
-  background-color: var(--disconnected);
+  color: var(--disconnected);
+  position: relative;
+  background-color: currentColor;
 }
 .marker.connected {
-  background-color: var(--connected);
+  color: var(--connected);
+}
+
+@keyframes pulse {
+  0% {filter: blur(0px)}
+  50% {filter: blur(2px)}
+  100% {filter: blur(0px)};
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 100%;
+  background-color: currentColor;
+  will-change: filter;
+  animation: pulse 2s ease-in-out infinite;
 }

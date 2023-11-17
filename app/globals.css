@@ -1,6 +1,8 @@
 :root {
   --connected: #00FF00;
   --disconnected: #FF0000;
+  --bg-secondary: rgb(0, 0, 0);
+  --bg-primary: rgb(23, 24, 28);
 }
 
 *,
@@ -16,11 +18,13 @@ body {
   color: white;
   margin: 0;
   padding: 0;
+  background-color: var(--bg-primary);
 }
 
-nav {
+aside {
   grid-column: 1 / 2;
   grid-row: 1 / 3;
+  background-color: var(--bg-secondary);
 }
 
 main {
@@ -31,6 +35,7 @@ main {
 footer {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+  background-color: var(--bg-secondary);
 }
 
 a {

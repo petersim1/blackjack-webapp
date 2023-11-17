@@ -7,9 +7,15 @@
 }
 
 .top_row {
+  grid-row: 1 / 2;
   display: flex;
   width: 100%;
   flex-direction: row;
+}
+
+.bottom_row {
+  grid-row: 2 / 3;
+  width: 100%;
 }
 
 .shoe_wrapper {
@@ -62,6 +68,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 40%;
+  height: var(--remaining);
+  transition: 0.1s;
   background-color: grey;
+}
+
+.house_wrapper {
+  display: flex;
+  flex: 3 0 0;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+  height: 100%;
+}
+
+.house_wrapper > div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
