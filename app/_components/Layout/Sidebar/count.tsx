@@ -22,7 +22,7 @@ export default (): JSX.Element => {
         <p>
           True Count:{" "}
           <span className={clsx(styled.sensitive, { [styled.hidden]: !show })}>
-            {gameData.data.count[1]}
+            {gameData.data.count[1].toFixed(4)}
           </span>
         </p>
       </div>

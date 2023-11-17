@@ -24,6 +24,7 @@
 
 .history {
   width: 100%;
+  flex: 1 0 0;
 }
 
 .selector {
@@ -46,7 +47,7 @@
 }
 
 .items.show {
-  max-height: 200px;
+  max-height: 400px;
   border: 1px solid white;
 }
 
@@ -74,6 +75,23 @@
   width: 20px;
   background-color: white;
   filter: blur(2px);
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 0 0 150px;
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.count > div > p:nth-child(1) {
+  margin-bottom: 10px;
 }
 
 /* MAIN */
