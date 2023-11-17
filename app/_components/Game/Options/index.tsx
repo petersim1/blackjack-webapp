@@ -53,7 +53,7 @@ export default ({
   return (
     <div className={styled.options_holder}>
       {Object.keys(defaultDisabled).map((name, ind) => (
-        <button onClick={handleSend} name={name} key={ind} disabled={disabled[name]}>
+        <button onClick={handleSend} name={name} key={ind} disabled={disabled[name]} tabIndex={1}>
           {name}
         </button>
       ))}
