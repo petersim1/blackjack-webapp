@@ -10,6 +10,7 @@ const defaultDisabled = {
   hit: true,
   stay: true,
   double: true,
+  surrender: true,
 };
 
 interface DisabledI {
@@ -30,7 +31,7 @@ export default ({
   const handleSend = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const { name } = event.currentTarget;
     if (connected && ws) {
-      if (["hit", "stay", "double"].includes(name)) {
+      if (["hit", "stay", "double", "surrender"].includes(name)) {
         ws.send(JSON.stringify({ code: "step", move: name }));
       } else {
         ws.send(JSON.stringify({ code: name }));
@@ -44,7 +45,7 @@ export default ({
       return;
     }
     const newObj: DisabledI = { start: !data.round_over };
-    ["stay", "hit", "double"].forEach((val) => {
+    ["stay", "hit", "double", "surrender"].forEach((val) => {
       newObj[val] = !data.policy.includes(val);
     });
     setDisabled(newObj);
