@@ -1,14 +1,12 @@
-import Image from "next/image";
 import styled from "../styled.module.css";
+import Card from "@/_components/Elements/Card";
 
 export default (): JSX.Element => {
   return (
     <div className={styled.shoe_wrapper}>
       <div className={styled.shoe_holder}>
         {[...Array(4)].map((_, i) => (
-          <div key={i} style={{ transform: `translateX(${-i * 5}px)` }}>
-            <Image src={"/images/back.png"} alt="back of card" width={200} height={278} />
-          </div>
+          <Card card={["Hidden", "Hidden"]} key={i} transform={`translateX(${-i * 5}px)`} />
         ))}
       </div>
       <div className={styled.card_fill_container}>
