@@ -84,3 +84,28 @@ label.toggle input:checked + .slider:before {
   background: var(--bg-secondary);
   padding: 10px;
 }
+
+.settings_modal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.rule {
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings_modal > button {
+  margin: auto;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 50%;
+}
+
+.warning {
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
+}
