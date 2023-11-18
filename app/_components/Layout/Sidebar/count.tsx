@@ -3,7 +3,7 @@
 import { useState } from "react";
 import clsx from "clsx";
 
-import { useWsDataContext } from "@/_lib/providers";
+import { useWsDataContext } from "@/_lib/hooks";
 import Toggle from "@/_components/Elements/Toggle";
 import styled from "@/_components/Layout/styled.module.css";
 

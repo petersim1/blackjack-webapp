@@ -1,19 +1,10 @@
 "use client";
 
-import {
-  FC,
-  ReactNode,
-  createContext,
-  useEffect,
-  useContext,
-  useRef,
-  useState,
-  useReducer,
-} from "react";
+import { FC, ReactNode, createContext, useEffect, useRef, useState, useReducer } from "react";
 
 import { WsDataContextI } from "@/_lib/types";
 import { gameReducer } from "@/_lib/reducers";
-import { INITIAL_WSDATA_CONTEXT, INITIAL_GAME_CONTEXT } from "./initialValues";
+import { INITIAL_WSDATA_CONTEXT, INITIAL_GAME_CONTEXT } from "@/_lib/constants";
 
 export const WsDataContext = createContext<WsDataContextI>(INITIAL_WSDATA_CONTEXT);
 
@@ -70,5 +61,3 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return <WsDataContext.Provider value={value}>{children}</WsDataContext.Provider>;
 };
-
-export const useWsDataContext = (): WsDataContextI => useContext(WsDataContext);

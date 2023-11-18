@@ -1,9 +1,9 @@
 "use client";
 
-import { FC, ReactNode, createContext, useContext, useState, useEffect } from "react";
+import { FC, ReactNode, createContext, useState, useEffect } from "react";
 
 import { ModalContextI } from "@/_lib/types";
-import { INITIAL_MODAL_CONTEXT } from "./initialValues";
+import { INITIAL_MODAL_CONTEXT } from "@/_lib/constants";
 import Modal from "@/_components/Elements/Modal";
 
 export const ModalContext = createContext<ModalContextI>(INITIAL_MODAL_CONTEXT);
@@ -67,5 +67,3 @@ export const ModalProvider: FC<{ children: ReactNode; closeButton: boolean }> = 
     </ModalContext.Provider>
   );
 };
-
-export const useModalContext = (): ModalContextI => useContext(ModalContext);

@@ -1,5 +1,5 @@
-import styled from "../styled.module.css";
 import Card from "@/_components/Elements/Card";
+import styled from "../styled.module.css";
 
 export default ({ percent }: { percent: number }): JSX.Element => {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useModalContext } from "@/_lib/providers";
+import { useModalContext } from "@/_lib/hooks";
 import SettingsModal from "@/_components/Elements/Modal/settings";
 import { Settings } from "@/_assets";
 import styled from "../styled.module.css";

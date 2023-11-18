@@ -7,7 +7,7 @@ import House from "./House";
 import Player from "./Player";
 import Options from "./Options";
 
-import { useWsDataContext } from "@/_lib/providers";
+import { useWsDataContext } from "@/_lib/hooks";
 
 export default (): JSX.Element => {
   const { ws, connected, gameData } = useWsDataContext();

@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import styled from "../styled.module.css";
-
 import { GameContextVarsI } from "@/_lib/types/wsData";
+import styled from "../styled.module.css";
 
 const defaultDisabled = {
   start: true,

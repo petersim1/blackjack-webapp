@@ -1,6 +1,6 @@
 "use client";
 
-import { useWsDataContext } from "@/_lib/providers";
+import { useWsDataContext } from "@/_lib/hooks";
 import styled from "../styled.module.css";
 
 export default (): JSX.Element => {
