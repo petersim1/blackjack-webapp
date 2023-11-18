@@ -1,3 +1,5 @@
+/* Input fields */
+
 label.toggle {
   position: relative;
   display: inline-block;
@@ -49,6 +51,26 @@ label.toggle input:checked + .slider:before {
   -ms-transform: translateX(15px);
   transform: translateX(15px);
 }
+
+label.number {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  background-color: #ccc;
+}
+
+label.number input { 
+  appearance: none;
+  width: 100%;
+  color: black;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/*  */
 
 .card {
   position: absolute;
@@ -104,10 +126,14 @@ label.toggle input:checked + .slider:before {
 }
 
 .settings_modal {
+  width: 300px;
+}
+
+.settings_modal form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 .rule {
@@ -115,7 +141,7 @@ label.toggle input:checked + .slider:before {
   justify-content: space-between;
 }
 
-.settings_modal > button {
+.settings_modal > form > button {
   margin: auto;
   cursor: pointer;
   margin-top: 20px;
@@ -123,6 +149,8 @@ label.toggle input:checked + .slider:before {
 }
 
 .warning {
+  margin-top: 10px;
+  display: block;
   font-size: 0.75rem;
   font-style: italic;
   text-align: center;

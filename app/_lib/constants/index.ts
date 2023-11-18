@@ -5,7 +5,12 @@ export const rulesDefault = {
   hit_after_split_aces: false,
   reduced_blackjack_payout: false,
   allow_surrender: true,
+};
+
+export const deckDefault = {
   shrink_deck: true,
+  n_decks: 6,
+  ratio_penetrate: 0.6667,
 };
 
 export const rulesDescriptors = {
@@ -15,7 +20,12 @@ export const rulesDescriptors = {
   hit_after_split_aces: "Hit after splitting Aces",
   reduced_blackjack_payout: "Reduced Blackjack payout",
   allow_surrender: "Allow surrender",
+};
+
+export const deckDescriptors = {
   shrink_deck: "Deck depletes",
+  n_decks: "Number of Decks",
+  ratio_penetrate: "Cut Card % through Deck",
 };
 
 export const INITIAL_MODAL_CONTEXT = {
