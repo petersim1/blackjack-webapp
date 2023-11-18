@@ -141,12 +141,25 @@ label.number input {
   justify-content: space-between;
 }
 
-.settings_modal > form > button {
+.settings_modal .button_holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 10px;
+  margin-top: 20px;
+}
+
+.settings_modal > form button {
   margin: auto;
   cursor: pointer;
-  margin-top: 20px;
-  width: 50%;
+  flex: 1 0 0;
 }
+.settings_modal > form button[type="submit"] {
+  flex: 1 0 100%;
+}
+
 
 .warning {
   margin-top: 10px;

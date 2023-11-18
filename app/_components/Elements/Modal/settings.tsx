@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import Toggle from "../Toggle";
 import Input from "../Input";
-import { rulesDescriptors, deckDescriptors } from "@/_lib/constants";
+import { rulesDescriptors, deckDescriptors, rulesDefault, deckDefault } from "@/_lib/constants";
 import { RulesI, DeckI, Stores } from "@/_lib/types";
 import { useLocalStorage, useModalContext } from "@/_lib/hooks";
 import styled from "../styled.module.css";
@@ -40,6 +40,18 @@ export default (): JSX.Element => {
     setOpen(false);
   };
 
+  const handleUndo = (event: React.FormEvent): void => {
+    event.preventDefault();
+    setDeckTemp({ ...deck });
+    setRulesTemp({ ...rules });
+  };
+
+  const handleSetToDefault = (event: React.FormEvent): void => {
+    event.preventDefault();
+    setDeckTemp({ ...deckDefault });
+    setRulesTemp({ ...rulesDefault });
+  };
+
   return (
     <div className={styled.settings_modal}>
       <form onSubmit={handleSubmit}>
@@ -68,7 +80,11 @@ export default (): JSX.Element => {
             )}
           </div>
         ))}
-        <button type="submit">Submit</button>
+        <div className={styled.button_holder}>
+          <button type="submit">Submit</button>
+          <button onClick={handleUndo}>Undo Changes</button>
+          <button onClick={handleSetToDefault}>Reset to Default</button>
+        </div>
       </form>
       <span className={styled.warning}>
         Pressing submit will start a new game under the given rules.
