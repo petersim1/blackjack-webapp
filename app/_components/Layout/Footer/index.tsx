@@ -6,8 +6,8 @@ export default (): JSX.Element => {
   return (
     <footer>
       <div className={styles.footer}>
-        <Settings />
         <Status />
+        <Settings />
       </div>
     </footer>
   );

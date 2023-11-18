@@ -8,7 +8,10 @@ import Modal from "@/_components/Elements/Modal";
 
 export const ModalContext = createContext<ModalContextI>(INITIAL_MODAL_CONTEXT);
 
-export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const ModalProvider: FC<{ children: ReactNode; closeButton: boolean }> = ({
+  children,
+  closeButton,
+}) => {
   const [open, setOpen] = useState(false);
   const [component, setComponent] = useState<ReactNode | null>(null);
 
@@ -19,25 +22,26 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
   };
 
+  const handleClickOutside = (event: MouseEvent): void => {
+    event.stopPropagation();
+    const el = document.getElementById("modal-wrapper");
+    if (!el) return;
+    if (!el.contains(event.target as Node)) {
+      // console.log(target);
+      setOpen(false);
+      setComponent(null);
+    }
+  };
+
   useEffect(() => {
     if (!open) {
       document.body.style.pointerEvents = "all";
+      window.removeEventListener("mousedown", handleClickOutside);
       return;
     }
     // prevent propagation, since the modal itself has pointer-events: all
     // it'll override this property.
     document.body.style.pointerEvents = "none";
-    const handleClickOutside = (event: MouseEvent): void => {
-      event.stopPropagation();
-      const el = document.getElementById("modal-wrapper");
-      if (!el) return;
-      if (!el.contains(event.target as Node)) {
-        // console.log(target);
-        setOpen(false);
-        setComponent(null);
-      }
-    };
-
     window.addEventListener("mousedown", handleClickOutside);
 
     return () => {
@@ -54,7 +58,12 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <ModalContext.Provider value={value}>
       {children}
-      {open && <Modal>{component}</Modal>}
+      {open && (
+        <Modal>
+          {closeButton && <button onClick={() => setOpen(false)}>x</button>}
+          {component}
+        </Modal>
+      )}
     </ModalContext.Provider>
   );
 };

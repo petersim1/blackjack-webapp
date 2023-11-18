@@ -16,7 +16,7 @@ export default ({ children }: { children: React.ReactNode }): JSX.Element => {
     <html lang="en">
       <body className={inter.className}>
         <WsDataProvider>
-          <ModalProvider>
+          <ModalProvider closeButton={true}>
             <Layout>
               <Sidebar />
               {children}

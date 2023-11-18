@@ -82,7 +82,25 @@ label.toggle input:checked + .slider:before {
 .content {
   border-radius: 10%;
   background: var(--bg-secondary);
-  padding: 25px;
+  --pad: 25px;
+  padding: var(--pad);
+  position: relative;
+}
+
+.content > button {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 100%;
+  background-color: gray;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: calc(var(--pad) - 1.2rem/2);
+  right: calc(var(--pad) - 1.2rem/2);
 }
 
 .settings_modal {
