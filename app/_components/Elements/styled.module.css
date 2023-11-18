@@ -57,3 +57,30 @@ label.toggle input:checked + .slider:before {
   width: 200px;
   height: 290.4px;
 }
+
+.modal_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none !important;
+  z-index: 999 !important;
+}
+
+.content,
+.content > * {
+  pointer-events: all;
+}
+
+.content {
+  border-radius: 10%;
+  background: var(--bg-secondary);
+  padding: 10px;
+}

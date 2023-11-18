@@ -107,9 +107,9 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 50px 10px 0px;
+  padding: 10px 50px;
 }
 
 .footer_content {
@@ -157,4 +157,8 @@
   background-color: currentColor;
   will-change: filter;
   animation: pulse 2s ease-in-out infinite;
+}
+
+.settings {
+  cursor: pointer;
 }
