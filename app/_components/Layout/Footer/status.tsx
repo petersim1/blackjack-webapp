@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 
-import { useWsDataContext } from "@/_lib/providers";
+import { useWsDataContext } from "@/_lib/hooks";
 import styled from "@/_components/Layout/styled.module.css";
 
 export default (): JSX.Element => {

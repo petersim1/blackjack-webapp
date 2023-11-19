@@ -1,6 +1,8 @@
 :root {
   --connected: #00FF00;
   --disconnected: #FF0000;
+  --toggle-on: #4CD964;
+  --toggle-off: #ccc;
   --bg-secondary: rgb(0, 0, 0);
   --bg-primary: rgb(23, 24, 28);
 }
@@ -54,9 +56,14 @@ a {
   text-decoration: none;
 }
 
-*:focus-visible {
+button:focus-visible {
   outline: none;
   box-shadow: -2px 2px 10px white;
+}
+
+label:has(input[type="number"]:focus),
+label:has(input[type="number"]:focus-visible) {
+  outline: 1px solid var(--toggle-on);
 }
 
 @media (prefers-color-scheme: dark) {

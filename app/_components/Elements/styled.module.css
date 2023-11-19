@@ -1,3 +1,5 @@
+/* Input fields */
+
 label.toggle {
   position: relative;
   display: inline-block;
@@ -18,7 +20,7 @@ label.toggle .slider {
   right: 0;
   bottom: 0;
   border-radius: 20px;
-  background-color: #ccc;
+  background-color: var(--toggle-off);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -37,11 +39,11 @@ label.toggle .slider:before {
 }
 
 label.toggle input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--toggle-on);
 }
 
 label.toggle input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--toggle-on);
 }
 
 label.toggle input:checked + .slider:before {
@@ -50,10 +52,123 @@ label.toggle input:checked + .slider:before {
   transform: translateX(15px);
 }
 
+label.number {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  background-color: var(--toggle-off);
+  border: 1px solid var(--toggle-off);
+  border-radius: 3px;
+}
+
+label.number input { 
+  appearance: none;
+  width: 100%;
+  color: black;
+  height: 100%;
+  padding: 2px 0 2px 3px;
+  border-radius: 3px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/*  */
+
 .card {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 200px;
   height: 290.4px;
+}
+
+.modal_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none !important;
+  z-index: 999 !important;
+}
+
+.content,
+.content > * {
+  pointer-events: all;
+}
+
+.content {
+  border-radius: 10%;
+  background: var(--bg-secondary);
+  --pad: 25px;
+  padding: var(--pad);
+  position: relative;
+}
+
+.content > button {
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 100%;
+  background-color: gray;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: calc(var(--pad) - 1.2rem/2);
+  right: calc(var(--pad) - 1.2rem/2);
+}
+
+.settings_modal {
+  width: 300px;
+}
+
+.settings_modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.rule {
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings_modal .button_holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 10px;
+  margin-top: 20px;
+}
+
+.settings_modal > form button {
+  margin: auto;
+  cursor: pointer;
+  flex: 1 0 0;
+}
+.settings_modal > form button[type="submit"] {
+  flex: 1 0 100%;
+}
+
+
+.warning {
+  margin-top: 10px;
+  display: block;
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
 }

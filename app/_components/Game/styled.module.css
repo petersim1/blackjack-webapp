@@ -51,7 +51,7 @@
   content: "";
   position: absolute;
   right: 0;
-  bottom: 33%;
+  top: var(--cut);
   background: yellow;
   width: 20px;
   height: 3px;
