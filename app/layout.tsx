@@ -1,7 +1,7 @@
 import "@/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { WsDataProvider, ModalProvider } from "@/_lib/providers";
+import { WsDataProvider, ModalProvider, BrowserStoreProvider } from "@/_lib/providers";
 import Layout, { Sidebar, Footer } from "./_components/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,15 +15,17 @@ export default ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WsDataProvider>
-          <ModalProvider closeButton={true}>
-            <Layout>
-              <Sidebar />
-              {children}
-              <Footer />
-            </Layout>
-          </ModalProvider>
-        </WsDataProvider>
+        <BrowserStoreProvider>
+          <WsDataProvider>
+            <ModalProvider closeButton={true}>
+              <Layout>
+                <Sidebar />
+                {children}
+                <Footer />
+              </Layout>
+            </ModalProvider>
+          </WsDataProvider>
+        </BrowserStoreProvider>
       </body>
     </html>
   );

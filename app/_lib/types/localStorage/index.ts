@@ -1,5 +1,10 @@
 export interface RulesI {
-  [key: string]: boolean;
+  allow_surrender: boolean;
+  dealer_hit_soft17: boolean;
+  double_after_split: boolean;
+  hit_after_split_aces: boolean;
+  push_dealer22: boolean;
+  reduced_blackjack_payout: boolean;
 }
 
 export interface DeckI {
@@ -13,9 +18,10 @@ export enum Stores {
   DECK = "deck",
 }
 
-export interface RulesLocalStoreI {
-  rules: RulesI;
-  deck: DeckI;
-  state: string;
-  updateStore: (store: Stores, data: RulesI | DeckI) => void;
+export interface BrowserStoreContextI {
+  storeData: {
+    rules: RulesI;
+    deck: DeckI;
+  };
+  updateStore: React.Dispatch<{ type: Stores; data: RulesI | DeckI }>;
 }

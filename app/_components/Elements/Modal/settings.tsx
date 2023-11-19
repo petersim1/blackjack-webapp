@@ -11,17 +11,17 @@ import styled from "../styled.module.css";
 
 export default (): JSX.Element => {
   const { setOpen } = useModalContext();
-  const { rules, deck, updateStore } = useLocalStorage();
-  const [rulesTemp, setRulesTemp] = useState<RulesI>({ ...rules });
-  const [deckTemp, setDeckTemp] = useState<DeckI>({ ...deck });
+  const { storeData, updateStore } = useLocalStorage();
+  const [rulesTemp, setRulesTemp] = useState<RulesI>({ ...storeData.rules });
+  const [deckTemp, setDeckTemp] = useState<DeckI>({ ...storeData.deck });
 
   useEffect(() => {
-    setRulesTemp({ ...rules });
-    setDeckTemp({ ...deck });
-  }, [rules, deck]);
+    setRulesTemp({ ...storeData.rules });
+    setDeckTemp({ ...storeData.deck });
+  }, [storeData]);
 
   const handleRules = (name: string): void => {
-    setRulesTemp((prev) => ({ ...prev, [name]: !rulesTemp[name] }));
+    setRulesTemp((prev) => ({ ...prev, [name]: !rulesTemp[name as keyof RulesI] }));
   };
 
   const handleDeck = (name: string, value: boolean): void => {
@@ -35,15 +35,15 @@ export default (): JSX.Element => {
 
   const handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
-    updateStore(Stores.RULES, { ...rulesTemp });
-    updateStore(Stores.DECK, { ...deckTemp });
+    updateStore({ type: Stores.RULES, data: { ...rulesTemp } });
+    updateStore({ type: Stores.DECK, data: { ...deckTemp } });
     setOpen(false);
   };
 
   const handleUndo = (event: React.FormEvent): void => {
     event.preventDefault();
-    setDeckTemp({ ...deck });
-    setRulesTemp({ ...rules });
+    setDeckTemp({ ...storeData.deck });
+    setRulesTemp({ ...storeData.rules });
   };
 
   const handleSetToDefault = (event: React.FormEvent): void => {

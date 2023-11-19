@@ -56,3 +56,11 @@ export const INITIAL_WSDATA_CONTEXT = {
     data: { ...INITIAL_GAME_CONTEXT },
   },
 };
+
+export const INITIAL_LS_CONTEXT = {
+  storeData: {
+    rules: { ...rulesDefault },
+    deck: { ...deckDefault },
+  },
+  updateStore: (): void => {},
+};
