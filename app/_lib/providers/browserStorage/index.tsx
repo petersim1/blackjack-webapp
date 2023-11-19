@@ -26,6 +26,8 @@ export const BrowserStoreProvider: FC<{ children: ReactNode }> = ({ children }) 
       const data = window.localStorage.getItem(store) || defaultObj;
       updateStore({ type: store, data: JSON.parse(data) });
     });
+    // TO DO: add logic that tells us when LocalStorage is updated
+    // This prevents flashing of default values.
   }, []);
 
   const value = {
