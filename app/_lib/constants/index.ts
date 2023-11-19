@@ -61,6 +61,7 @@ export const INITIAL_LS_CONTEXT = {
   storeData: {
     rules: { ...rulesDefault },
     deck: { ...deckDefault },
+    count: true,
   },
   updateStore: (): void => {},
 };

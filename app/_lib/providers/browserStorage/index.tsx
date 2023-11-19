@@ -2,7 +2,7 @@
 
 import { FC, ReactNode, createContext, useReducer, useEffect } from "react";
 
-import { BrowserStoreContextI, Stores } from "@/_lib/types";
+import { BrowserStoreContextI, StorageAggI, Stores } from "@/_lib/types";
 import { BrowserStoreReducer } from "@/_lib/reducers";
 import { INITIAL_LS_CONTEXT } from "@/_lib/constants";
 
@@ -15,19 +15,17 @@ export const BrowserStoreProvider: FC<{ children: ReactNode }> = ({ children }) 
   const [storeData, updateStore] = useReducer(BrowserStoreReducer, {
     rules: { ...INITIAL_LS_CONTEXT.storeData.rules },
     deck: { ...INITIAL_LS_CONTEXT.storeData.deck },
+    count: INITIAL_LS_CONTEXT.storeData.count,
   });
 
   useEffect(() => {
     // initialize the store once mounted.
-    let data;
-    data =
-      window.localStorage.getItem("--bj-rules") ||
-      JSON.stringify({ ...INITIAL_LS_CONTEXT.storeData.rules });
-    if (data) updateStore({ type: Stores.RULES, data: JSON.parse(data) });
-    data =
-      window.localStorage.getItem("--bj-deck") ||
-      JSON.stringify({ ...INITIAL_LS_CONTEXT.storeData.deck });
-    if (data) updateStore({ type: Stores.DECK, data: JSON.parse(data) });
+    Object.values(Stores).forEach((store) => {
+      const keyName = store.split("-").slice(-1)[0];
+      const defaultObj = JSON.stringify(INITIAL_LS_CONTEXT.storeData[keyName as keyof StorageAggI]);
+      const data = window.localStorage.getItem(store) || defaultObj;
+      updateStore({ type: store, data: JSON.parse(data) });
+    });
   }, []);
 
   const value = {

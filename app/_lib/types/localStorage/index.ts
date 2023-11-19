@@ -14,14 +14,18 @@ export interface DeckI {
 }
 
 export enum Stores {
-  RULES = "rules",
-  DECK = "deck",
+  RULES = "--bj-rules",
+  DECK = "--bj-deck",
+  COUNT = "--bj-count",
+}
+
+export interface StorageAggI {
+  rules: RulesI;
+  deck: DeckI;
+  count: boolean;
 }
 
 export interface BrowserStoreContextI {
-  storeData: {
-    rules: RulesI;
-    deck: DeckI;
-  };
-  updateStore: React.Dispatch<{ type: Stores; data: RulesI | DeckI }>;
+  storeData: StorageAggI;
+  updateStore: React.Dispatch<{ type: Stores; data: RulesI | DeckI | boolean }>;
 }

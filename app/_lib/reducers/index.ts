@@ -13,29 +13,13 @@ export const gameReducer = (
 };
 
 export const BrowserStoreReducer = (
-  state: { rules: RulesI; deck: DeckI },
-  action: { type: string; data: RulesI | DeckI },
-): { rules: RulesI; deck: DeckI } => {
-  let lsKey: string;
-  let key;
-  switch (action.type) {
-    case Stores.RULES: {
-      lsKey = "--bj-rules";
-      key = "rules";
-      break;
-    }
-    case Stores.DECK: {
-      lsKey = "--bj-deck";
-      key = "deck";
-      break;
-    }
-    default: {
-      return state;
-    }
-  }
-  window.localStorage.setItem(lsKey, JSON.stringify(action.data));
+  state: { rules: RulesI; deck: DeckI; count: boolean },
+  action: { type: Stores; data: RulesI | DeckI | boolean },
+): { rules: RulesI; deck: DeckI; count: boolean } => {
+  const key = action.type.split("-").slice(-1)[0];
+  window.localStorage.setItem(action.type, JSON.stringify(action.data));
   // I can simply return action.data, but to be safe, I'll fetch again from localstorage.
-  const data = window.localStorage.getItem(lsKey);
+  const data = window.localStorage.getItem(action.type);
   if (!data) return state;
   return {
     ...state,
