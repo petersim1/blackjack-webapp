@@ -33,6 +33,7 @@ export default ({
       if (["hit", "stay", "double", "surrender"].includes(name)) {
         ws.send(JSON.stringify({ code: "step", move: name }));
       } else {
+        // TO DO: implement a wager (already implement in backend)
         ws.send(JSON.stringify({ code: name }));
       }
     }
@@ -43,12 +44,12 @@ export default ({
       setDisabled({ ...defaultDisabled });
       return;
     }
-    const newObj: DisabledI = { start: !data.round_over };
+    const newObj: DisabledI = { start: !data.round_over || !data.ready };
     ["stay", "hit", "double", "surrender"].forEach((val) => {
       newObj[val] = !data.policy.includes(val);
     });
     setDisabled(newObj);
-  }, [connected, data.round_over, data.policy]);
+  }, [connected, data.round_over, data.policy, data.ready]);
 
   return (
     <div className={styled.options_holder}>

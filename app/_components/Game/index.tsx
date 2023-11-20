@@ -13,6 +13,11 @@ export default (): JSX.Element => {
   const { ws, connected, gameData } = useWsDataContext();
   const { storeData } = useLocalStorage();
 
+  const handleSend = (): void => {
+    if (!ws) return;
+    ws.send(JSON.stringify({ code: "init", rules: storeData.rules, deck: storeData.deck }));
+  };
+
   return (
     <div className={styled.board}>
       <div className={styled.top_row}>
@@ -20,6 +25,11 @@ export default (): JSX.Element => {
         <Shoe percent={gameData.data.cards_remaining} cut={storeData.deck.ratio_penetrate} />
       </div>
       <Player cards={gameData.data.player_cards} total={gameData.data.player_total} />
+      {!gameData.data.ready && (
+        <div>
+          <button onClick={handleSend}>Begin Gameplay</button>
+        </div>
+      )}
       <Options data={gameData.data} connected={connected} ws={ws} />
     </div>
   );

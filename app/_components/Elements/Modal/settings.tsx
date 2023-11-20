@@ -6,11 +6,12 @@ import Toggle from "../Toggle";
 import Input from "../Input";
 import { rulesDescriptors, deckDescriptors, rulesDefault, deckDefault } from "@/_lib/constants";
 import { RulesI, DeckI, Stores } from "@/_lib/types";
-import { useLocalStorage, useModalContext } from "@/_lib/hooks";
+import { useLocalStorage, useModalContext, useWsDataContext } from "@/_lib/hooks";
 import styled from "../styled.module.css";
 
 export default (): JSX.Element => {
   const { setOpen } = useModalContext();
+  const { ws } = useWsDataContext();
   const { storeData, updateStore } = useLocalStorage();
   const [rulesTemp, setRulesTemp] = useState<RulesI>({ ...storeData.rules });
   const [deckTemp, setDeckTemp] = useState<DeckI>({ ...storeData.deck });
@@ -38,6 +39,8 @@ export default (): JSX.Element => {
     updateStore({ type: Stores.RULES, data: { ...rulesTemp } });
     updateStore({ type: Stores.DECK, data: { ...deckTemp } });
     setOpen(false);
+    if (!ws) return;
+    ws.send(JSON.stringify({ code: "init", rules: rulesTemp, deck: deckTemp }));
   };
 
   const handleUndo = (event: React.FormEvent): void => {
