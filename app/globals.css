@@ -3,6 +3,11 @@
   --disconnected: #FF0000;
   --toggle-on: #4CD964;
   --toggle-off: #ccc;
+  --purple: #8957e5;
+  --red: #da3633;
+  --green: #238636;
+  --yellow: #9e6a03;
+  --blue: #1f6feb;
   --bg-secondary: rgb(0, 0, 0);
   --bg-primary: rgb(23, 24, 28);
 }
