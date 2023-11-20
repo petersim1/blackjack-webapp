@@ -33,7 +33,6 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
     };
     ws.current.onmessage = ({ data }): void => {
       const incomingMessage = JSON.parse(data);
-      console.log(incomingMessage.house_cards, incomingMessage.house_total);
       gameDispatch({ type: "STEP", payload: { ...incomingMessage } });
     };
 
