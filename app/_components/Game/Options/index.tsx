@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 
 import { GameContextVarsI } from "@/_lib/types/wsData";
+import Button from "@/_components/Elements/Button";
 import styled from "../styled.module.css";
 
 const defaultDisabled = {
@@ -10,6 +11,14 @@ const defaultDisabled = {
   stay: true,
   double: true,
   surrender: true,
+};
+
+const nameColors = {
+  start: "var(--blue)",
+  hit: "var(--green)",
+  stay: "var(--red)",
+  double: "var(--purple)",
+  surrender: "var(--gray)",
 };
 
 interface DisabledI {
@@ -54,9 +63,15 @@ export default ({
   return (
     <div className={styled.options_holder}>
       {Object.keys(defaultDisabled).map((name, ind) => (
-        <button onClick={handleSend} name={name} key={ind} disabled={disabled[name]} tabIndex={1}>
+        <Button
+          onClick={handleSend}
+          name={name}
+          key={ind}
+          disabled={disabled[name]}
+          color={nameColors[name as keyof typeof nameColors]}
+        >
           {name}
-        </button>
+        </Button>
       ))}
     </div>
   );
