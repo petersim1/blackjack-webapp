@@ -23,7 +23,7 @@ export default ({
       ))} */}
       <div className={styled.hand_holder}>
         {cards.map((card, ind) => (
-          <Card card={card} key={ind} transform={`translateX(${ind * 35}px)`} />
+          <Card card={card} key={ind} transform={`translateX(${ind * 35}px)`} highlight={true} />
         ))}
         {total && <div className={styled.total}>{total}</div>}
         {hand_result && (

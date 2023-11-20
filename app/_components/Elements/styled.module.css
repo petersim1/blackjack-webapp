@@ -82,6 +82,15 @@ label.number input {
   left: 0;
   width: 200px;
   height: 290.4px;
+  border-radius: 10px;
+}
+
+.card.active {
+  box-shadow: -2px 2px 10px white;
+}
+
+.card.inactive {
+  filter: brightness(0.5);
 }
 
 .modal_wrapper {
