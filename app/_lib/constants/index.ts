@@ -56,6 +56,7 @@ export const INITIAL_WSDATA_CONTEXT = {
     history: [],
     data: { ...INITIAL_GAME_CONTEXT },
   },
+  gameDispatch: (): void => {},
 };
 
 export const INITIAL_LS_CONTEXT = {
@@ -66,4 +67,19 @@ export const INITIAL_LS_CONTEXT = {
     count: true,
   },
   updateStore: (): void => {},
+};
+
+export const nameColors = {
+  start: "var(--blue)",
+  hit: "var(--green)",
+  stay: "var(--yellow)",
+  double: "var(--purple)",
+  surrender: "var(--gray)",
+};
+
+export const resColors = {
+  win: "var(--green)",
+  loss: "var(--red)",
+  bust: "var(--red)",
+  push: "var(--gray)",
 };

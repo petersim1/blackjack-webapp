@@ -1,3 +1,4 @@
 import Settings from "./settings";
+import Hide from "./hide";
 
-export { Settings };
+export { Settings, Hide };

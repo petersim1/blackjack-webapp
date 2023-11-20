@@ -2,11 +2,27 @@ import { GameDataAggI, GameContextVarsI, RulesI, DeckI, Stores } from "@/_lib/ty
 
 export const gameReducer = (
   state: GameDataAggI,
-  action: { type: string; payload: GameContextVarsI },
+  action: { type: string; payload: GameContextVarsI; move?: string },
 ): GameDataAggI => {
   switch (action.type) {
-    case "STEP":
-      return { history: [...state.history, action.payload], data: action.payload };
+    case "RECEIVE": {
+      if (action.payload.player_total) {
+        if (action.payload.policy.length > 0) {
+          return { history: [...state.history, action.payload], data: action.payload };
+        } else {
+          if (action.payload.round_over) {
+            return { history: [...state.history, action.payload], data: action.payload };
+          }
+        }
+      }
+      return { ...state, data: action.payload };
+    }
+    case "MOVE": {
+      const history = [...state.history];
+      history[history.length - 1].move = action.move;
+      return { ...state, history: history };
+    }
+
     default:
       return state;
   }

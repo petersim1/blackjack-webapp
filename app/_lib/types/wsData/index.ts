@@ -11,6 +11,7 @@ export interface GameContextVarsI {
   house_cards: [string, string][];
   player_cards: [string, string][];
   policy: string[];
+  move?: string;
 }
 
 export interface GameDataAggI {
@@ -22,4 +23,5 @@ export interface WsDataContextI {
   ws: WebSocket | null;
   connected: boolean;
   gameData: GameDataAggI;
+  gameDispatch: React.Dispatch<any>;
 }
