@@ -21,7 +21,7 @@ export default (): JSX.Element => {
   return (
     <div className={styled.board}>
       <div className={styled.top_row}>
-        <House cards={gameData.data.house_cards} />
+        <House cards={gameData.data.house_cards} total={gameData.data.house_total} />
         <Shoe percent={gameData.data.cards_remaining} cut={storeData.deck.ratio_penetrate} />
       </div>
       <Player cards={gameData.data.player_cards} total={gameData.data.player_total} />

@@ -75,7 +75,7 @@
 .house_wrapper {
   display: flex;
   flex: 3 0 0;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-end;
   position: relative;
   height: 100%;
