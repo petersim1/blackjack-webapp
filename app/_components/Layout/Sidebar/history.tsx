@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { useWsDataContext } from "@/_lib/hooks";
 import { nameColors, resColors } from "@/_lib/constants";
-import { Hide } from "@/_assets";
+import { Hide, Show } from "@/_assets";
 import styled from "@/_components/Layout/styled.module.css";
 
 export default (): JSX.Element => {
@@ -24,7 +24,11 @@ export default (): JSX.Element => {
       <div className={styled.selector}>
         <div>History</div>
         <div onClick={handleOpen}>
-          <Hide fill="white" height="1rem" display="block" />
+          {open ? (
+            <Hide fill="white" width="1rem" display="block" />
+          ) : (
+            <Show fill="white" width="1rem" display="block" />
+          )}
         </div>
       </div>
       <div className={clsx(styled.items, { [styled.show]: open })}>
