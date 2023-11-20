@@ -26,6 +26,7 @@ export interface StorageAggI {
 }
 
 export interface BrowserStoreContextI {
+  ready: boolean;
   storeData: StorageAggI;
   updateStore: React.Dispatch<{ type: Stores; data: RulesI | DeckI | boolean }>;
 }

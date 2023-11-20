@@ -58,6 +58,7 @@ export const INITIAL_WSDATA_CONTEXT = {
 };
 
 export const INITIAL_LS_CONTEXT = {
+  ready: false,
   storeData: {
     rules: { ...rulesDefault },
     deck: { ...deckDefault },
