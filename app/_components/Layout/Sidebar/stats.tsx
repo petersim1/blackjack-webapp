@@ -11,11 +11,11 @@ export default (): JSX.Element => {
       <div>
         <p>
           {"Profit (units): "}
-          <span>{gameData.data.profit}</span>
+          <span>{gameData.data.total_profit}</span>
         </p>
       </div>
       <div>
-        <p>{gameData.data.text}</p>
+        <p>{gameData.data.hand_result && gameData.data.hand_result[0]}</p>
       </div>
     </div>
   );
