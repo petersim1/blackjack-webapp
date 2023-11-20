@@ -1,12 +1,13 @@
 export interface GameContextVarsI {
-  cards_remaining: number;
+  ready: boolean;
   round_over: boolean;
-  deal_house: boolean;
-  deal_player: boolean;
-  profit: number;
+  hand_result?: [string, number];
+  round_profit?: number;
+  total_profit: number;
   count: number[];
-  text: string;
-  player_total: number;
+  cards_remaining: number;
+  player_total?: number;
+  house_total?: number;
   house_cards: [string, string][];
   player_cards: [string, string][];
   policy: string[];
