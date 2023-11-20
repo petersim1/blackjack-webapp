@@ -24,7 +24,11 @@ export default (): JSX.Element => {
         <House cards={gameData.data.house_cards} total={gameData.data.house_total} />
         <Shoe percent={gameData.data.cards_remaining} cut={storeData.deck.ratio_penetrate} />
       </div>
-      <Player cards={gameData.data.player_cards} total={gameData.data.player_total} />
+      <Player
+        cards={gameData.data.player_cards}
+        total={gameData.data.player_total}
+        hand_result={gameData.data.hand_result}
+      />
       {!gameData.data.ready && (
         <div>
           <button onClick={handleSend}>Begin Gameplay</button>

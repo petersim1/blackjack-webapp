@@ -107,6 +107,23 @@
   transform: translateX(-50%);
 }
 
+.result {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 800;
+  background-color: var(--bg-primary);
+  padding: 3px 10px;
+  text-align: center;
+}
+
+.result > span:nth-child(1) {
+  text-transform: uppercase;
+}
+
 /* OPTIONS */
 
 .options_holder {
