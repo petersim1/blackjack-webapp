@@ -33,7 +33,7 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
     };
     ws.current.onmessage = ({ data }): void => {
       const incomingMessage = JSON.parse(data);
-      gameDispatch({ type: "STEP", payload: { ...incomingMessage } });
+      gameDispatch({ type: "RECEIVE", payload: { ...incomingMessage } });
     };
 
     const wsCurrent = ws.current;
@@ -56,6 +56,7 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const value = {
     ws: ws.current,
     gameData,
+    gameDispatch,
     connected,
   };
 

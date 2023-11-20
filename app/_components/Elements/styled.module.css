@@ -82,6 +82,15 @@ label.number input {
   left: 0;
   width: 200px;
   height: 290.4px;
+  border-radius: 10px;
+}
+
+.card.active {
+  box-shadow: -2px 2px 10px white;
+}
+
+.card.inactive {
+  filter: brightness(0.5);
 }
 
 .modal_wrapper {
@@ -171,4 +180,29 @@ label.number input {
   font-size: 0.75rem;
   font-style: italic;
   text-align: center;
+}
+
+.button {
+  appearance: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 5px 12px;
+  height: 3rem;
+  font-size: 1.2rem;
+  min-width: 60px;
+  border: 2px solid var(--color);
+  outline: none;
+  height: fit-content;
+}
+
+.button:disabled {
+  cursor: default;
+  opacity: 0.8;
+  border: 2px solid transparent;
+}
+
+.button:focus-visible,
+.button:hover:not(:disabled) {
+  box-shadow: -2px 2px 10px var(--color);
 }

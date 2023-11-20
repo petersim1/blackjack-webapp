@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 
 import { GameContextVarsI } from "@/_lib/types/wsData";
+import { useWsDataContext } from "@/_lib/hooks";
+import Button from "@/_components/Elements/Button";
+import { nameColors } from "@/_lib/constants";
 import styled from "../styled.module.css";
 
 const defaultDisabled = {
@@ -26,11 +29,13 @@ export default ({
   connected: boolean;
 }): JSX.Element => {
   const [disabled, setDisabled] = useState<DisabledI>({ ...defaultDisabled });
+  const { gameDispatch, gameData } = useWsDataContext();
 
   const handleSend = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const { name } = event.currentTarget;
     if (connected && ws) {
       if (["hit", "stay", "double", "surrender"].includes(name)) {
+        gameDispatch({ type: "MOVE", payload: { ...gameData }, move: name });
         ws.send(JSON.stringify({ code: "step", move: name }));
       } else {
         // TO DO: implement a wager (already implement in backend)
@@ -54,9 +59,15 @@ export default ({
   return (
     <div className={styled.options_holder}>
       {Object.keys(defaultDisabled).map((name, ind) => (
-        <button onClick={handleSend} name={name} key={ind} disabled={disabled[name]} tabIndex={1}>
+        <Button
+          onClick={handleSend}
+          name={name}
+          key={ind}
+          disabled={disabled[name]}
+          color={nameColors[name as keyof typeof nameColors]}
+        >
           {name}
-        </button>
+        </Button>
       ))}
     </div>
   );

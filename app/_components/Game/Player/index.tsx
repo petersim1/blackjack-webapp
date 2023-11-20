@@ -4,9 +4,11 @@ import styled from "../styled.module.css";
 export default ({
   cards,
   total,
+  hand_result,
 }: {
   cards: [string, string][];
-  total: number | undefined;
+  total?: number;
+  hand_result?: [string, number];
 }): JSX.Element => {
   return (
     <div className={styled.player_wrapper}>
@@ -21,9 +23,16 @@ export default ({
       ))} */}
       <div className={styled.hand_holder}>
         {cards.map((card, ind) => (
-          <Card card={card} key={ind} transform={`translateX(${ind * 35}px)`} />
+          <Card card={card} key={ind} transform={`translateX(${ind * 35}px)`} highlight={true} />
         ))}
         {total && <div className={styled.total}>{total}</div>}
+        {hand_result && (
+          <p className={styled.result}>
+            <span>{hand_result[0]}</span>
+            <br />
+            <span>{`${hand_result[1] > 0 ? "+" : ""}${hand_result[1]}`} units</span>
+          </p>
+        )}
       </div>
     </div>
   );
