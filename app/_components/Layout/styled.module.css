@@ -70,7 +70,7 @@
 .item .move {
   padding: 2px 5px;
   border: 2px solid var(--color);
-  border-radius: 3px;
+  border-radius: 5px;
   line-height: 1em;
 }
 
