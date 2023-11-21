@@ -37,7 +37,8 @@ export default (): JSX.Element => {
       <Player
         cards={gameData.data.player_cards}
         total={gameData.data.player_total}
-        hand_result={gameData.data.hand_result}
+        hand_result_text={gameData.data.hand_result_text}
+        hand_result_profit={gameData.data.hand_result_profit}
       />
       <div className={styled.bottom_row}>
         <Options data={gameData.data} connected={connected} ws={ws} wager={wager} />
