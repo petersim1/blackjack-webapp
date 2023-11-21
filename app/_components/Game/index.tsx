@@ -38,7 +38,7 @@ export default (): JSX.Element => {
         hand_result={gameData.data.hand_result}
       />
       <div className={styled.bottom_row}>
-        <Options data={gameData.data} connected={connected} ws={ws} />
+        <Options data={gameData.data} connected={connected} ws={ws} wager={wager} />
         {!gameData.data.ready ? (
           <Button onClick={handleSend} name="Begin Gameplay" disabled={false} color="var(--gray)">
             Begin Gameplay

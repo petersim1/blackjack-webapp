@@ -35,7 +35,7 @@ export const INITIAL_MODAL_CONTEXT = {
 };
 
 export const INITIAL_GAME_CONTEXT = {
-  ready: true,
+  ready: false,
   round_over: false,
   hand_result: undefined,
   round_profit: undefined,
