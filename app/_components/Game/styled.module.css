@@ -4,6 +4,7 @@
   height: 100%;
   width: 100%;
   padding: 20px;
+  gap: 20px;
 }
 
 .top_row {
@@ -86,6 +87,7 @@
 .player_wrapper {
   display: flex;
   justify-content: center;
+  grid-row: 2 / 3;
   gap: 50px;
   align-items: flex-end;
   height: 100%;
@@ -127,10 +129,28 @@
 
 /* OPTIONS */
 
+.bottom_row {
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
 .options_holder {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.wager {
+  margin: auto;
+  text-align: center;
+}
+
+.wager p {
+  margin-bottom: 5px;
 }

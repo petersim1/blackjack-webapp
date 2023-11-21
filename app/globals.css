@@ -29,6 +29,10 @@ body {
   background-color: var(--bg-primary);
 }
 
+body {
+  pointer-events: all;
+}
+
 h1,
 h2,
 h3,
