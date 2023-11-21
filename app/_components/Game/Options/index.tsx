@@ -23,10 +23,12 @@ export default ({
   ws,
   data,
   connected,
+  wager,
 }: {
   ws: WebSocket | null;
   data: GameContextVarsI;
   connected: boolean;
+  wager: number;
 }): JSX.Element => {
   const [disabled, setDisabled] = useState<DisabledI>({ ...defaultDisabled });
   const { gameDispatch, gameData } = useWsDataContext();
@@ -39,7 +41,7 @@ export default ({
         ws.send(JSON.stringify({ code: "step", move: name }));
       } else {
         // TO DO: implement a wager (already implement in backend)
-        ws.send(JSON.stringify({ code: name }));
+        ws.send(JSON.stringify({ code: name, wager }));
       }
     }
   };

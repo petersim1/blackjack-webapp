@@ -14,9 +14,6 @@ export default (): JSX.Element => {
           <span>{gameData.data.total_profit}</span>
         </p>
       </div>
-      <div>
-        <p>{gameData.data.hand_result && gameData.data.hand_result[0]}</p>
-      </div>
     </div>
   );
 };

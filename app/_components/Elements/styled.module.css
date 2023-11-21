@@ -74,6 +74,10 @@ label.number input {
   outline: none;
 }
 
+label.number:has(input:disabled) {
+  filter: brightness(0.8);
+}
+
 /*  */
 
 .card {
