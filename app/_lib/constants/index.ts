@@ -5,6 +5,7 @@ export const rulesDefault = {
   hit_after_split_aces: false,
   reduced_blackjack_payout: false,
   allow_surrender: true,
+  split_any_ten: true,
 };
 
 export const deckDefault = {
@@ -20,6 +21,7 @@ export const rulesDescriptors = {
   hit_after_split_aces: "Hit after splitting Aces",
   reduced_blackjack_payout: "Reduced Blackjack payout",
   allow_surrender: "Allow surrender",
+  split_any_ten: "Split if Value Matches",
 };
 
 export const deckDescriptors = {

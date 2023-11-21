@@ -5,6 +5,7 @@ export interface RulesI {
   hit_after_split_aces: boolean;
   push_dealer22: boolean;
   reduced_blackjack_payout: boolean;
+  split_any_ten: boolean;
 }
 
 export interface DeckI {

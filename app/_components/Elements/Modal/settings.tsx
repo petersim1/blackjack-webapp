@@ -56,6 +56,8 @@ export default (): JSX.Element => {
     setRulesTemp({ ...rulesDefault });
   };
 
+  console.log(rulesTemp);
+
   return (
     <div className={styled.settings_modal}>
       <form onSubmit={handleSubmit}>
