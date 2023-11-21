@@ -12,12 +12,14 @@ import Input from "@/_components/Elements/Input";
 import { useWsDataContext, useLocalStorage } from "@/_lib/hooks";
 
 export default (): JSX.Element => {
-  const { ws, connected, gameData } = useWsDataContext();
+  const { ws, connected, gameData, gameDispatch } = useWsDataContext();
   const { storeData } = useLocalStorage();
   const [wager, setWager] = useState(1);
 
   const handleSend = (): void => {
     if (!ws) return;
+    // clear the history, reset the game.
+    gameDispatch({ type: "CLEAR" });
     ws.send(JSON.stringify({ code: "init", rules: storeData.rules, deck: storeData.deck }));
   };
 

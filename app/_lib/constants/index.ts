@@ -75,6 +75,7 @@ export const nameColors = {
   stay: "var(--yellow)",
   double: "var(--purple)",
   surrender: "var(--gray)",
+  split: "var(--pink)",
 };
 
 export const resColors = {

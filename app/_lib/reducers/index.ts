@@ -22,7 +22,9 @@ export const gameReducer = (
       history[history.length - 1].move = action.move;
       return { ...state, history: history };
     }
-
+    case "CLEAR": {
+      return { ...state, history: [] };
+    }
     default:
       return state;
   }
