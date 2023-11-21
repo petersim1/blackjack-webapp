@@ -13,6 +13,7 @@ const defaultDisabled = {
   stay: true,
   double: true,
   surrender: true,
+  split: true,
 };
 
 interface DisabledI {
@@ -36,7 +37,7 @@ export default ({
   const handleSend = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const { name } = event.currentTarget;
     if (connected && ws) {
-      if (["hit", "stay", "double", "surrender"].includes(name)) {
+      if (["hit", "stay", "double", "surrender", "split"].includes(name)) {
         gameDispatch({ type: "MOVE", payload: { ...gameData }, move: name });
         ws.send(JSON.stringify({ code: "step", move: name }));
       } else {
@@ -51,13 +52,12 @@ export default ({
       setDisabled({ ...defaultDisabled });
       return;
     }
-    console.log(data.current_hand, data.policy);
     const newObj: DisabledI = { start: !data.round_over || !data.ready };
     ["stay", "hit", "double", "surrender", "split"].forEach((val) => {
-      newObj[val] = !data.policy[data.current_hand].includes(val);
+      newObj[val] = !data.policy.includes(val);
     });
     setDisabled(newObj);
-  }, [connected, data.round_over, data.policy, data.ready, data.current_hand]);
+  }, [connected, data.round_over, data.policy, data.ready]);
 
   return (
     <div className={styled.options_holder}>

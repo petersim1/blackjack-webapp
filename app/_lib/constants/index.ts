@@ -46,7 +46,7 @@ export const INITIAL_GAME_CONTEXT = {
   house_total: undefined,
   house_cards: [],
   player_cards: [[]],
-  policy: [[]],
+  policy: [],
   current_hand: 0,
 };
 
