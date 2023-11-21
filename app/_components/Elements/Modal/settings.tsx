@@ -35,12 +35,13 @@ export default (): JSX.Element => {
   };
 
   const handleSubmit = (event: React.FormEvent): void => {
+    // updates localStorage, closes the Modal, sends a ws message to reset gameplay.
     event.preventDefault();
     updateStore({ type: Stores.RULES, data: { ...rulesTemp } });
     updateStore({ type: Stores.DECK, data: { ...deckTemp } });
     setOpen(false);
     if (!ws) return;
-    ws.send(JSON.stringify({ code: "init", rules: rulesTemp, deck: deckTemp }));
+    ws.send(JSON.stringify({ code: "reset" }));
   };
 
   const handleUndo = (event: React.FormEvent): void => {
@@ -54,6 +55,8 @@ export default (): JSX.Element => {
     setDeckTemp({ ...deckDefault });
     setRulesTemp({ ...rulesDefault });
   };
+
+  console.log(rulesTemp);
 
   return (
     <div className={styled.settings_modal}>
