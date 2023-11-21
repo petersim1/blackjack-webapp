@@ -45,8 +45,9 @@ export const INITIAL_GAME_CONTEXT = {
   player_total: undefined,
   house_total: undefined,
   house_cards: [],
-  player_cards: [],
-  policy: [],
+  player_cards: [[]],
+  policy: [[]],
+  current_hand: 0,
 };
 
 export const INITIAL_WSDATA_CONTEXT = {

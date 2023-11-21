@@ -51,12 +51,13 @@ export default ({
       setDisabled({ ...defaultDisabled });
       return;
     }
+    console.log(data.current_hand, data.policy);
     const newObj: DisabledI = { start: !data.round_over || !data.ready };
-    ["stay", "hit", "double", "surrender"].forEach((val) => {
-      newObj[val] = !data.policy.includes(val);
+    ["stay", "hit", "double", "surrender", "split"].forEach((val) => {
+      newObj[val] = !data.policy[data.current_hand].includes(val);
     });
     setDisabled(newObj);
-  }, [connected, data.round_over, data.policy, data.ready]);
+  }, [connected, data.round_over, data.policy, data.ready, data.current_hand]);
 
   return (
     <div className={styled.options_holder}>
