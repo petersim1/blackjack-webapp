@@ -22,7 +22,7 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     // browser API, so must be mounted. Establish the onmessage handler.
     // Should probably push the "gameContext" to a reducer for cleanliness.
-    ws.current = new WebSocket("ws://localhost:8080");
+    ws.current = new WebSocket("ws://localhost:8080/ws");
     ws.current.onopen = (): void => {
       console.log("open");
       setConnected(true);
