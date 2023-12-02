@@ -27,7 +27,6 @@ export const ModalProvider: FC<{ children: ReactNode; closeButton: boolean }> = 
     const el = document.getElementById("modal-wrapper");
     if (!el) return;
     if (!el.contains(event.target as Node)) {
-      // console.log(target);
       setOpen(false);
       setComponent(null);
     }
