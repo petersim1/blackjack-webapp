@@ -12,11 +12,13 @@ export const metadata: Metadata = {
 };
 
 export default ({ children }: { children: React.ReactNode }): JSX.Element => {
+  const WS_URL =
+    process.env.ENVIRONMENT == "development" ? process.env.WS_URL_DEV : process.env.WS_URL_PROD;
   return (
     <html lang="en">
       <body className={inter.className}>
         <BrowserStoreProvider>
-          <WsDataProvider>
+          <WsDataProvider url={WS_URL!}>
             <ModalProvider closeButton={true}>
               <Layout>
                 <Sidebar />

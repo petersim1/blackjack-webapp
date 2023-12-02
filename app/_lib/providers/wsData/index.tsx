@@ -8,7 +8,7 @@ import { INITIAL_WSDATA_CONTEXT, INITIAL_GAME_CONTEXT } from "@/_lib/constants";
 
 export const WsDataContext = createContext<WsDataContextI>(INITIAL_WSDATA_CONTEXT);
 
-export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const WsDataProvider: FC<{ children: ReactNode; url: string }> = ({ children, url }) => {
   const ws = useRef<WebSocket | null>(null);
   // since we're storing a ref for the ws, re-renders won't be triggered.
   // I'll still want some notion of connection status during renders,
@@ -22,7 +22,7 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     // browser API, so must be mounted. Establish the onmessage handler.
     // Should probably push the "gameContext" to a reducer for cleanliness.
-    ws.current = new WebSocket("ws://localhost:8080/ws");
+    ws.current = new WebSocket(url);
     ws.current.onopen = (): void => {
       console.log("open");
       setConnected(true);
@@ -51,7 +51,7 @@ export const WsDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
       setConnected(false);
     };
-  }, []);
+  }, [url]);
 
   const value = {
     ws: ws.current,
