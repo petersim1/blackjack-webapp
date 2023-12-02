@@ -15,12 +15,11 @@ export default (): JSX.Element => {
   const barChartRef = useRef(null);
 
   const doInference = async (
-    player: number,
-    house: number,
+    model_inputs: [number, number, number],
     policy: string[],
   ): Promise<{ move: string; value: number }[]> => {
     const session = await spawnOrtSession();
-    const data = Float32Array.from([player, house, -1]);
+    const data = Float32Array.from([...model_inputs]);
     const tensor = new Tensor("float32", data, [1, 3]);
     const feeds = { [session.inputNames[0]]: tensor };
     const output = await session.run(feeds);
@@ -38,32 +37,14 @@ export default (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (!gameData.data.policy) return;
-    if (!gameData.data.player_total) return;
-    if (gameData.data.current_hand < 0) return;
-    const curPlayerTot = gameData.data.player_total[gameData.data.current_hand];
-    const houseCard = gameData.data.house_cards[0][0];
-    let houseValue;
-    if (["J", "Q", "K"].includes(houseCard)) {
-      houseValue = 10;
-    } else if (houseCard === "A") {
-      houseValue = 11;
-    } else {
-      houseValue = Number(houseCard);
-    }
-
+    if (!gameData.data.model) return;
     const svg = select(barChartRef.current);
     svg.selectAll("*").remove();
 
-    doInference(curPlayerTot, houseValue, gameData.data.policy).then((result) => {
+    doInference(gameData.data.model, gameData.data.policy).then((result) => {
       createViz(svg, result, moves);
     });
-  }, [
-    gameData.data.player_total,
-    gameData.data.current_hand,
-    gameData.data.policy,
-    gameData.data.house_cards,
-  ]);
+  }, [gameData.data.policy, gameData.data.model]);
 
   return <div className={styled.graph_holder} ref={barChartRef} />;
 };

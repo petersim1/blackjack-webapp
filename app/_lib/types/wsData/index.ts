@@ -12,6 +12,7 @@ export interface GameContextVarsI {
   player_cards: [string, string][][];
   policy: string[];
   current_hand: number;
+  model?: [number, number, number];
   move?: string;
 }
 
