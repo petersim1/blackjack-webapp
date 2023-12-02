@@ -22,35 +22,32 @@ export const spawnOrtSession = async (): Promise<InferenceSession> => {
   return session;
 };
 
+interface DataI {
+  move: string;
+  value: number;
+}
+
 export const createViz = (
   plotHolder: d3.Selection<null, unknown, null, undefined>,
-  data: (number | undefined)[],
+  data: DataI[],
   moves: string[],
 ): void => {
-  console.log(data);
   const plottingProps = {
-    width: 1000,
-    height: 1000,
+    width: 300,
+    height: 300,
     margin: {
-      top: 20,
-      bottom: 20,
-      left: 20,
-      right: 20,
+      top: 10,
+      bottom: 10,
+      left: 10,
+      right: 10,
     },
   };
-
-  const dataObj: { move: string; value: number }[] = [];
-  data.forEach((d, i) => {
-    if (d !== undefined) {
-      dataObj.push({ move: moves[i], value: d! });
-    }
-  });
 
   const x = d3
     .scaleBand()
     .range([plottingProps.margin.left, plottingProps.width - plottingProps.margin.right])
     .domain(moves)
-    .padding(0.2);
+    .padding(0.3);
   const y = d3
     .scaleLinear()
     .domain([-1, 1])
@@ -62,22 +59,31 @@ export const createViz = (
     .style("max-height", "100%")
     .style("max-width", "100%");
 
-  // svg
-  //   .append("line")
-  //   .style("stroke", "grey")
-  //   .attr("x1", x("stay"))
-  //   .attr("y1", 0)
-  //   .attr("x2", x(moves.length))
-  //   .attr("y2", 0);
+  svg
+    .append("line")
+    .style("stroke", "grey")
+    .attr("x1", plottingProps.margin.left)
+    .attr("y1", plottingProps.height / 2)
+    .attr("x2", plottingProps.width - plottingProps.margin.right)
+    .attr("y2", plottingProps.height / 2);
+
+  const getY = (d: DataI): number => {
+    const val = d.value < 0 ? y(0) : y(d.value);
+    return val;
+  };
+  const getH = (d: DataI): number => {
+    const val = Math.min(1, Math.max(-1, d.value));
+    return val < 0 ? y(val) - y(0) : y(0) - y(val);
+  };
 
   svg
     .selectAll("bar-chart")
-    .data(dataObj)
+    .data(data)
     .enter()
     .append("rect")
-    .attr("x", (d) => x(d.move))
-    .attr("y", (d) => y(d.value))
-    .attr("height", (d) => plottingProps.height - y(d.value))
+    .attr("x", (d) => x(d.move)!)
+    .attr("y", getY)
+    .attr("height", getH)
     .attr("width", x.bandwidth())
     .attr("fill", (d) => nameColors[d.move as keyof typeof nameColors]);
 };

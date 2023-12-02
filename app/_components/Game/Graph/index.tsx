@@ -18,8 +18,7 @@ export default (): JSX.Element => {
     player: number,
     house: number,
     policy: string[],
-  ): Promise<(number | undefined)[]> => {
-    console.log(player, house);
+  ): Promise<{ move: string; value: number }[]> => {
     const session = await spawnOrtSession();
     const data = Float32Array.from([player, house, -1]);
     const tensor = new Tensor("float32", data, [1, 3]);
@@ -27,12 +26,11 @@ export default (): JSX.Element => {
     const output = await session.run(feeds);
 
     const result = Array.from(output[session.outputNames[0]].data as Float32Array);
-    const toShow: (number | undefined)[] = [];
-    moves.forEach((v, i) => {
-      if (policy.includes(v)) {
-        toShow.push(result[i]);
-      } else {
-        toShow.push(undefined);
+
+    const toShow: { move: string; value: number }[] = [];
+    moves.forEach((move, i) => {
+      if (policy.includes(move)) {
+        toShow.push({ move, value: result[i] });
       }
     });
 
