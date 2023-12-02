@@ -59,11 +59,11 @@ export default (): JSX.Element => {
                   className={styled.move}
                   style={
                     {
-                      ["--color"]: resColors[item.hand_result?.[0] as keyof typeof resColors],
+                      ["--color"]: resColors[item.hand_result_text?.[0] as keyof typeof resColors],
                     } as React.CSSProperties
                   }
                 >
-                  {item.hand_result?.[0]}
+                  {item.hand_result_text?.[0]}
                 </div>
               </div>
             </div>
