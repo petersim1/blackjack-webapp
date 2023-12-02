@@ -5,6 +5,7 @@
   width: 100%;
   padding: 20px;
   gap: 20px;
+  position: relative;;
 }
 
 .top_row {
@@ -153,4 +154,14 @@
 
 .wager p {
   margin-bottom: 5px;
+}
+
+/* GRAPH */
+
+.graph_holder {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  height: 300px;
 }

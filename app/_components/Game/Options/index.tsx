@@ -9,11 +9,11 @@ import styled from "../styled.module.css";
 
 const defaultDisabled = {
   start: true,
-  hit: true,
   stay: true,
+  hit: true,
   double: true,
-  surrender: true,
   split: true,
+  surrender: true,
 };
 
 interface DisabledI {
