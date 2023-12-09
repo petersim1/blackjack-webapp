@@ -33,6 +33,11 @@ export const WsDataProvider: FC<{ children: ReactNode; url: string }> = ({ child
     };
     ws.current.onmessage = ({ data }): void => {
       const incomingMessage = JSON.parse(data);
+      if (incomingMessage.type === "ping" && ws.current !== null) {
+        console.log("heartbeat");
+        ws.current.send(JSON.stringify({ code: "pong" }));
+        return;
+      }
       gameDispatch({ type: "RECEIVE", payload: { ...incomingMessage } });
     };
 
