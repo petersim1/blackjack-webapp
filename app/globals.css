@@ -1,38 +1,7 @@
-:root {
-  --connected: #00FF00;
-  --disconnected: #FF0000;
-  --toggle-on: #4CD964;
-  --toggle-off: #ccc;
-  --purple: #8957e5;
-  --red: #da3633;
-  --green: #238636;
-  --yellow: #9e6a03;
-  --blue: #1f6feb;
-  --gray: #6e7681;
-  --pink: #db61a2;
-  --bg-secondary: rgb(0, 0, 0);
-  --bg-primary: rgb(23, 24, 28);
-}
-
 *,
 ::after,
 ::before {
   box-sizing: border-box;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-family: "Inter";
-  color: white;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-primary);
-}
-
-body {
-  pointer-events: all;
 }
 
 h1,
@@ -71,10 +40,4 @@ a {
 label:has(input[type="number"]:focus),
 label:has(input[type="number"]:focus-visible) {
   outline: 1px solid var(--toggle-on);
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

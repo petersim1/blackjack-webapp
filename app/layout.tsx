@@ -14,12 +14,18 @@ export const metadata: Metadata = {
 const styles = stylex.create({
   html: {
     maxWidth: "100vw",
+    colorScheme: {
+      default: "light dark",
+      "@media (prefers-color-scheme: dark)": "dark",
+    },
   },
   body: {
     overflowX: "hidden",
     margin: 0,
     padding: 0,
     backgroundColor: globalTokens.bgPrimary,
+    color: globalTokens.primaryText,
+    pointerEvents: "all",
   },
 });
 
