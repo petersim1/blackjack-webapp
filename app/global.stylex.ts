@@ -205,3 +205,13 @@ export const globalTokens = stylex.defineVars({
   borderRadius: "10px",
   primaryText: "white",
 });
+
+const pulse = stylex.keyframes({
+  "0%": { filter: "blur(0px)" },
+  "50%": { filter: "blur(2px)" },
+  "100%": { filter: "blur(0px)" },
+});
+
+export const animations = stylex.defineVars({
+  pulse,
+});
