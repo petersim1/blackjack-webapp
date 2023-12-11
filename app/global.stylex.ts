@@ -184,9 +184,24 @@ export const spacing = stylex.defineVars({
 
 // I won't add themes for now, but I can define global tokens.
 
+export const colors = stylex.defineVars({
+  connected: "#00FF00",
+  disconnected: "#FF0000",
+  toggleOn: "#4CD964",
+  toggleOff: "#ccc",
+  purple: "#8957e5",
+  red: "#da3633",
+  green: "#238636",
+  yellow: "#9e6a03",
+  blue: "#1f6feb",
+  gray: "#6e7681",
+  pink: "#db61a2",
+});
+
 export const globalTokens = stylex.defineVars({
-  maxWith: `${MAX_WIDTH}px`,
+  maxWidth: `${MAX_WIDTH}px`,
   bgPrimary: "rgb(0, 0, 0)",
   bgSecondary: "rgb(23, 24, 28)",
   borderRadius: "10px",
+  primaryText: "white",
 });
