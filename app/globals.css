@@ -1,3 +1,13 @@
+:root {
+  --purple: #8957e5;
+  --red: #da3633;
+  --green: #238636;
+  --yellow: #9e6a03;
+  --blue: #1f6feb;
+  --gray: #6e7681;
+  --pink: #db61a2;
+}
+
 *,
 ::after,
 ::before {

@@ -1,12 +1,21 @@
 "use client";
+import * as stylex from "@stylexjs/stylex";
 
 import { useWsDataContext } from "@/_lib/hooks";
-import styled from "../styled.module.css";
+
+const styles = stylex.create({
+  stats: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    width: "100%",
+  },
+});
 
 export default (): JSX.Element => {
   const { gameData } = useWsDataContext();
   return (
-    <div className={styled.stats}>
+    <div {...stylex.props(styles.stats)}>
       <h3>{"Let's Play"}</h3>
       <div>
         <p>

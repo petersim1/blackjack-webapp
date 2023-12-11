@@ -1,11 +1,37 @@
 "use client";
 
-import clsx from "clsx";
+import * as stylex from "@stylexjs/stylex";
 
 import { useWsDataContext, useLocalStorage } from "@/_lib/hooks";
 import { Stores } from "@/_lib/types";
 import Toggle from "@/_components/Elements/Toggle";
-import styled from "@/_components/Layout/styled.module.css";
+
+const styles = stylex.create({
+  count: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    width: "100%",
+  },
+  sensitive: {
+    display: "inline-block",
+    position: "relative",
+  },
+  hidden: {
+    visibility: "hidden",
+    "::after": {
+      content: "",
+      position: "absolute",
+      visibility: "visible",
+      top: "0",
+      left: "0",
+      bottom: "0",
+      width: "20px",
+      backgroundColor: "white",
+      filter: "blur(2px)",
+    },
+  },
+});
 
 export default (): JSX.Element => {
   const { gameData } = useWsDataContext();
@@ -16,17 +42,17 @@ export default (): JSX.Element => {
   };
 
   return (
-    <div className={styled.count}>
+    <div {...stylex.props(styles.count)}>
       <div>
         <p>
           Count:{" "}
-          <span className={clsx(styled.sensitive, { [styled.hidden]: !storeData.count })}>
+          <span {...stylex.props(styles.sensitive, !storeData.count && styles.hidden)}>
             {gameData.data.count[0]}
           </span>
         </p>
         <p>
           True Count:{" "}
-          <span className={clsx(styled.sensitive, { [styled.hidden]: !storeData.count })}>
+          <span {...stylex.props(styles.sensitive, !storeData.count && styles.hidden)}>
             {gameData.data.count[1].toFixed(4)}
           </span>
         </p>
