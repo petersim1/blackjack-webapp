@@ -1,10 +1,16 @@
 import * as stylex from "@stylexjs/stylex";
+import { globalTokens } from "@/global.stylex";
 
 import Stats from "./stats";
 import History from "./history";
 import Count from "./count";
 
 const styles = stylex.create({
+  aside: {
+    gridColumn: "1 / 2",
+    gridRow: "1 / 3",
+    backgroundColor: globalTokens.bgSecondary,
+  },
   sidebar: {
     width: "100%",
     height: "100%",
@@ -20,7 +26,7 @@ const styles = stylex.create({
 
 export default (): JSX.Element => {
   return (
-    <aside>
+    <aside {...stylex.props(styles.aside)}>
       <div {...stylex.props(styles.sidebar)}>
         <Stats />
         <History />
