@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -24,6 +25,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@pandacss/dev": "^0.21.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "eslint-config-prettier": "^9.0.0",
