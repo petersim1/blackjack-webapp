@@ -6,7 +6,7 @@ export default ({ percent, cut }: { percent: number; cut: number }): JSX.Element
     <div className={styled.shoe_wrapper}>
       <div className={styled.shoe_holder}>
         {[...Array(4)].map((_, i) => (
-          <Card card={["Hidden", "Hidden"]} key={i} transform={`translateX(${-i * 5}px)`} />
+          <Card src={"/images/back.png"} key={i} transform={`translateX(${-i * 5}px)`} />
         ))}
       </div>
       <div className={styled.card_fill_container}>
