@@ -1,6 +1,6 @@
 "use client";
 import * as stylex from "@stylexjs/stylex";
-import { colors, animations } from "@/global.stylex";
+import { colors, animations } from "../../../global.stylex";
 
 import { useWsDataContext } from "@/_lib/hooks";
 

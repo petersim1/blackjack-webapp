@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens } from "@/global.stylex";
+import { globalTokens } from "../../../global.stylex";
 
 import Stats from "./stats";
 import History from "./history";

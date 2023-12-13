@@ -15,15 +15,6 @@ module.exports = {
           rootDir: path.join(__dirname, '../..'),
         },
       },
-    ],
-    [
-      'module-resolver',
-      {
-        root: ['./'],
-        alias: {
-          '@/': ['./app/'],
-        },
-      },
-    ],
+    ]
   ],
 };

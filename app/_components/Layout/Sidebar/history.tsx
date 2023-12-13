@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens } from "@/global.stylex";
+import { globalTokens } from "../../../global.stylex";
 
 import { useWsDataContext } from "@/_lib/hooks";
 import { nameColors, resColors } from "@/_lib/constants";
