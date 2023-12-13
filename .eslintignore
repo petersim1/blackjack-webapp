@@ -6,3 +6,5 @@ graphqlEnums.js
 commitlint.config.js
 next.config.js
 styled-system
+*.cjs
+*.mjs
