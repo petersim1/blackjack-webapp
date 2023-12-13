@@ -9,8 +9,9 @@
     "next/core-web-vitals",
     "prettier"
   ],
-  "plugins": ["prettier", "@typescript-eslint", "import"],
+  "plugins": ["prettier", "@typescript-eslint", "import", "@stylexjs"],
   "rules": {
+    "@stylexjs/valid-styles": "error",
     "import/no-anonymous-default-export": "off",
     "react/display-name": "off",
     "no-underscore-dangle": "off",
