@@ -1,7 +1,7 @@
 import "@/globals.css";
 import type { Metadata } from "next";
 import * as stylex from "@stylexjs/stylex";
-import { globalTokens } from "@/global.stylex";
+import { globalTokens } from "./global.stylex"; // build fails otherwise
 
 import { WsDataProvider, ModalProvider, BrowserStoreProvider } from "@/_lib/providers";
 import Layout, { Sidebar, Footer } from "./_components/Layout";

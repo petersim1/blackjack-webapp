@@ -6,13 +6,22 @@ module.exports = {
     [
       '@stylexjs/babel-plugin',
       {
-        dev: process.env.NODE_ENV === 'development',
+        dev: process.env.ENVIRONMENT === 'development',
         runtimeInjection: false,
         genConditionalClasses: true,
         treeshakeCompensation: true,
         unstable_moduleResolution: {
           type: 'commonJS',
           rootDir: path.join(__dirname, '../..'),
+        },
+      },
+    ],
+    [
+      'module-resolver',
+      {
+        root: ['./'],
+        alias: {
+          '@/': ['./app/'],
         },
       },
     ],
