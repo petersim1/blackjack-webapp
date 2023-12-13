@@ -5,3 +5,4 @@ babel.config.js
 graphqlEnums.js
 commitlint.config.js
 next.config.js
+styled-system
